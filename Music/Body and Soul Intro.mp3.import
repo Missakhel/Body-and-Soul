@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Body and Soul Intro.mp3-2d9526867d7acf77fc8ddc2d09d8d2b4.mp3str"
+
+[deps]
+
+source_file="res://Music/Body and Soul Intro.mp3"
+dest_files=[ "res://.import/Body and Soul Intro.mp3-2d9526867d7acf77fc8ddc2d09d8d2b4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
