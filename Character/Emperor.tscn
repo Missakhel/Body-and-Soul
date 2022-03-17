@@ -23,3 +23,5 @@ polygon = PoolVector2Array( -8, -28, 8, -28, 8, -24, 12, -24, 12, -16, 16, -16, 
 [node name="Camera" type="Camera2D" parent="."]
 
 [node name="Soul" parent="." instance=ExtResource( 3 )]
+
+[node name="Timer" type="Timer" parent="."]

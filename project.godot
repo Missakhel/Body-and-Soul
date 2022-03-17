@@ -9,13 +9,73 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Sprite",
+"class": "Actor",
+"language": "GDScript",
+"path": "res://Scripts/Actors/Actor.gd"
+}, {
+"base": "Actor",
+"class": "Body",
+"language": "GDScript",
+"path": "res://Scripts/Actors/Body.gd"
+}, {
+"base": "Node2D",
+"class": "Dungeon",
+"language": "GDScript",
+"path": "res://Scripts/Map/Dungeon.gd"
+}, {
+"base": "Node2D",
+"class": "Emotion",
+"language": "GDScript",
+"path": "res://Scripts/Emotions/Emotion.gd"
+}, {
+"base": "Actor",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Scripts/Actors/Enemy.gd"
+}, {
 "base": "Node2D",
 "class": "GameWorld",
 "language": "GDScript",
 "path": "res://Scripts/GameWorld.gd"
+}, {
+"base": "Node2D",
+"class": "Inventory",
+"language": "GDScript",
+"path": "res://Scripts/Inventory.gd"
+}, {
+"base": "Node2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Scripts/Actors/Player.gd"
+}, {
+"base": "Actor",
+"class": "Soul",
+"language": "GDScript",
+"path": "res://Scripts/Actors/Soul.gd"
+}, {
+"base": "Node2D",
+"class": "State",
+"language": "GDScript",
+"path": "res://Scripts/States/State.gd"
+}, {
+"base": "Node2D",
+"class": "Tile",
+"language": "GDScript",
+"path": "res://Scripts/Map/Tile.gd"
 } ]
 _global_script_class_icons={
-"GameWorld": ""
+"Actor": "",
+"Body": "",
+"Dungeon": "",
+"Emotion": "",
+"Enemy": "",
+"GameWorld": "",
+"Inventory": "",
+"Player": "",
+"Soul": "",
+"State": "",
+"Tile": ""
 }
 
 [application]

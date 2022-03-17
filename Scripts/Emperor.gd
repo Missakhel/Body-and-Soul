@@ -1,11 +1,15 @@
-extends Sprite
+extends Actor
 
+#Resource preloading
 onready var gameWorld = get_node("/root/Scene")
+onready var inventoryResource = preload("res://Scripts/Inventory.gd")
 onready var camera = $Camera
 onready var audio = $AudioStream
 onready var soul = $Soul
 onready var soulCamera = $Soul/Camera
+onready var integrityMeter = $Timer
 
+#Position Variables
 var characterPosition : Vector2 = Vector2(0,0)
 var soulPosition : Vector2 = Vector2(0,0)
 var spriteOffset : Vector2 = Vector2(32, 32)
@@ -13,10 +17,22 @@ var soulModeON : bool = false
 var soulMergeable : bool = false
 var targetCell : int = 0
 
+#Character Variables
+export var integrityLimit : float = 100
+var life : int = 0
+onready var inventory = inventoryResource.Inventory.new()
+
 signal moved
 signal enteredHole
+signal updateIntegrity
 
 func _ready():
+	pass
+
+func takeDamage(enemy):
+	pass
+
+func useItem(item):
 	pass
 
 func _on_Scene_finishedMapGeneration():
@@ -29,6 +45,7 @@ func _on_Scene_finishedMapGeneration():
 
 func soulModeActivation(activated : bool):
 	if activated:
+		integrityMeter.start(integrityLimit)
 		soulModeON = true
 		soul.visible = true
 		soulCamera.current = true
@@ -36,10 +53,10 @@ func soulModeActivation(activated : bool):
 		emit_signal("moved")
 		soul.transform.origin = gameWorld.worldCoordinate + gameWorld.worldCoordinate*.09
 	else:
+		integrityMeter.stop()
 		soulModeON = false
 		soul.visible = false
-		camera.current = true
-
+		
 func movement(movementVector: Vector2): 
 	if soulModeON:
 		soulPosition += movementVector
@@ -49,6 +66,7 @@ func movement(movementVector: Vector2):
 		else:
 			if soulPosition == characterPosition and soulMergeable:
 				soulModeActivation(false)
+				emit_signal("updateIntegrity", integrityLimit)
 			soulMergeable = true
 			emit_signal("moved")
 			#Taking reference the main character as origin of the soul plus an offset of 10% percentage to match the tiles
@@ -75,16 +93,32 @@ func _process(_delta):
 	elif scale <= Vector2(1,1):
 		scale = Vector2(1,1)
 		if Input.is_action_just_pressed("ui_up"):
-			movement(Vector2(0,-1))
+			if soulModeON:
+				movement(Vector2(1,-1))
+			else:
+				movement(Vector2(0,-1))
 		if Input.is_action_just_pressed("ui_down"):
-			movement(Vector2(0,1))
+			if soulModeON:
+				movement(Vector2(-1,1))
+			else:
+				movement(Vector2(0,1))
 		if Input.is_action_just_pressed("ui_left"):
-			movement(Vector2(-1,0))
+			if soulModeON:
+				movement(Vector2(-1,-1))
+			else:
+				movement(Vector2(-1,0))
 		if Input.is_action_just_pressed("ui_right"):
-			movement(Vector2(1,0))
+			if soulModeON:
+				movement(Vector2(1,1))
+			else:
+				movement(Vector2(1,0))
 		if Input.is_action_just_pressed("soul_mode") and !soulModeON:
 			soulModeActivation(true)
+
+	if soulModeON:
+		emit_signal("updateIntegrity", integrityMeter.time_left)
+		print(integrityMeter.time_left)
 	
 func _on_Title_closed():
 	camera.current = true
-	audio.play()
+	#audio.play()

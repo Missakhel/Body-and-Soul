@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Nodes/Tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/GameWorld.gd" type="Script" id=2]
+[ext_resource path="res://Nodes/HUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Character/Emperor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/Emperor.gd" type="Script" id=5]
 [ext_resource path="res://Nodes/Title.tscn" type="PackedScene" id=6]
@@ -9,8 +10,8 @@
 [node name="Scene" type="Node2D"]
 position = Vector2( 1, 0 )
 script = ExtResource( 2 )
-widthRand = Vector2( 7, 11 )
-heightRand = Vector2( 7, 11 )
+widthRand = Vector2( 11, 33 )
+heightRand = Vector2( 11, 33 )
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1
@@ -21,9 +22,12 @@ format = 1
 position = Vector2( 354, 352 )
 script = ExtResource( 5 )
 
+[node name="HUD" parent="." instance=ExtResource( 3 )]
+
 [node name="Title" parent="." instance=ExtResource( 6 )]
 
 [connection signal="finishedMapGeneration" from="." to="Character" method="_on_Scene_finishedMapGeneration"]
 [connection signal="enteredHole" from="Character" to="." method="_on_Character_enteredHole"]
 [connection signal="moved" from="Character" to="." method="_on_Sprite_moved"]
+[connection signal="updateIntegrity" from="Character" to="HUD" method="_on_Character_updateIntegrity"]
 [connection signal="closed" from="Title" to="Character" method="_on_Title_closed"]

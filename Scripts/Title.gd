@@ -6,7 +6,7 @@ signal closed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	audio.play()
+	#audio.play()
 	pass
 
 func _process(_delta):
