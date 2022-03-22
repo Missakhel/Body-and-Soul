@@ -1,8 +1,8 @@
-extends Actor
+extends Sprite
 
 #Resource preloading
 onready var gameWorld = get_node("/root/Scene")
-onready var inventoryResource = preload("res://Scripts/Inventory.gd")
+#onready var inventoryResource = preload("res://Scripts/Inventory.gd")
 onready var camera = $Camera
 onready var audio = $AudioStream
 onready var soul = $Soul
@@ -20,7 +20,7 @@ var targetCell : int = 0
 #Character Variables
 export var integrityLimit : float = 100
 var life : int = 0
-onready var inventory = inventoryResource.Inventory.new()
+onready var inventory = Inventory.new()
 
 signal moved
 signal enteredHole
