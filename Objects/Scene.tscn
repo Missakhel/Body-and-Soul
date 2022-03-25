@@ -7,20 +7,20 @@
 [ext_resource path="res://Nodes/Title.tscn" type="PackedScene" id=6]
 
 [node name="Scene" type="Node2D"]
-position = Vector2( 1, 0 )
 script = ExtResource( 2 )
 widthRand = Vector2( 7, 11 )
 heightRand = Vector2( 7, 11 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1
 tile_set = ExtResource( 1 )
 format = 1
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
-
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [node name="Title" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [node name="AudioStream" type="AudioStreamPlayer2D" parent="."]

@@ -1,18 +1,24 @@
 extends Node2D
 
 class_name Player
-onready var body : Actor
-onready var soul : Actor
+onready var body : Sprite
+onready var soul : Sprite
 
+var dungeon : Node2D
 var soulModeOn : bool
-var currentMode : Actor
+var currentMode : Sprite
 var currentState : State
 var lastState : State
 
-func _init():
-	body = Body.new()
-	soul = Soul.new()
+var soulResource = load("res://Character/Soul.tscn")
+var bodyResource = load("res://Character/Body.tscn")
+
+func _ready():
+	print("Dungeon -> Player")
+	dungeon = get_parent()
+	soul = soulResource.instance()
 	add_child(body)
+	body = bodyResource.instance()
 	add_child(soul)
 	currentMode = body
 	currentMode.onEnter()

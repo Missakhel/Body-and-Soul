@@ -4,11 +4,11 @@ class_name Tile
 
 var objectID : int
 var spriteID : int
-var occupier : Actor
+var occupier : Sprite
 
-func updateOccupier(occupier : Actor):
-    self.occupier = occupier
+func updateOccupier(eOccupier : Sprite):
+    occupier = eOccupier
 
-func _init(spriteID : int, objectID : int):
-    self.spriteID = spriteID
-    self.objectID = objectID
+func _init(eSpriteID : int, eObjectID : int):
+    spriteID = eSpriteID
+    objectID = eObjectID

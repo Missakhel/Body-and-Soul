@@ -23,6 +23,8 @@ enum Theme {ROOM, KEEP, HALL, ROOF}
 enum MapCode {ACCESSIBLE, INACCESSIBLE, HOLE, WALL}
 
 func _ready():
+	print("Dungeon Ready")
+	_player = $Player
 	initialize()
 
 func initialize():
@@ -96,10 +98,14 @@ func place(yRange : Vector2, xRange : Vector2, isPlayer : bool, tileToken : Stri
 			validPosition = true
 			map[mapCoordinate.y][mapCoordinate.x].spriteID = _tileSet.find_tile_by_name(tileToken)
 			if isPlayer:
-				_player = $Player
 				map[mapCoordinate.y][mapCoordinate.x].updateOccupier(_player.body)
+				print(_player.body.gridPosition)
+				print(_player.body.worldPosition)
 				_player.body.gridPosition = mapCoordinate
 				_player.body.worldPosition = tileSize.x * mapCoordinate + _player.body.spriteOffset
+				print(_player.body.gridPosition)
+				print(_player.body.worldPosition)
+				_player.body.stepSize = tileSize.x
 				#characterPosition = mapCoordinate
 				#worldCoordinate = tileSize.x * mapCoordinate #_tileMap.map_to_world(mapCoordinate)
 				#emit_signal("finishedMapGeneration") #This signal is emitted since it means that everything has been placed
