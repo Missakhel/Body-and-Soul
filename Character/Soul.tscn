@@ -1,21 +1,24 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Assets/tiles.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Actors/Soul.gd" type="Script" id=3]
 
 [node name="Soul" type="Sprite"]
+z_index = 1
 texture = ExtResource( 1 )
 hframes = 48
 vframes = 22
 frame = 461
+script = ExtResource( 3 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 modulate = Color( 0, 0, 0, 1 )
 self_modulate = Color( 0, 0, 0, 1 )
-z_index = -1
 z_as_relative = false
 texture_offset = Vector2( -32, -32 )
 polygon = PoolVector2Array( -8, -28, 8, -28, 8, -24, 12, -24, 12, -4, 16, -4, 16, -8, 20, -8, 20, 0, 24, 0, 24, 20, 20, 20, 12, 20, 12, 28, 8, 28, 8, 20, -8, 20, -8, 28, -12, 28, -12, 20, -24, 20, -24, 0, -20, 0, -20, -8, -16, -8, -16, -4, -12, -4, -12, -24, -8, -24 )
 
 [node name="Camera" type="Camera2D" parent="."]
+rotating = true
 
 [node name="Timer" type="Timer" parent="."]

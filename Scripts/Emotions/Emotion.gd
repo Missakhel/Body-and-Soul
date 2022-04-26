@@ -2,11 +2,6 @@ extends Node2D
 
 class_name Emotion
 
-func onEnter():
-    pass
+var id : int
 
-func onUpdate():
-    pass
-
-func onExit():
-    pass
+enum Type {NEUTER, SAD, ANGRY, SCARED}

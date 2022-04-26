@@ -2,7 +2,7 @@ extends Node2D
 
 class_name State
 
-var parent : Sprite
+var stateParent : Sprite
 
 func onEnter():
     pass

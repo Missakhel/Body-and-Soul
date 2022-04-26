@@ -14,15 +14,45 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Actors/Actor.gd"
 }, {
+"base": "Emotion",
+"class": "Angry",
+"language": "GDScript",
+"path": "res://Scripts/Emotions/Angry.gd"
+}, {
+"base": "State",
+"class": "Attack",
+"language": "GDScript",
+"path": "res://Scripts/States/Attack.gd"
+}, {
 "base": "Actor",
 "class": "Body",
 "language": "GDScript",
 "path": "res://Scripts/Actors/Body.gd"
 }, {
+"base": "State",
+"class": "Buy",
+"language": "GDScript",
+"path": "res://Scripts/States/Buy.gd"
+}, {
+"base": "Item",
+"class": "Coin",
+"language": "GDScript",
+"path": "res://Scripts/Items/Coin.gd"
+}, {
+"base": "State",
+"class": "Death",
+"language": "GDScript",
+"path": "res://Scripts/States/Death.gd"
+}, {
 "base": "Node2D",
 "class": "Dungeon",
 "language": "GDScript",
 "path": "res://Scripts/Map/Dungeon.gd"
+}, {
+"base": "Item",
+"class": "Elixir",
+"language": "GDScript",
+"path": "res://Scripts/Items/Elixir.gd"
 }, {
 "base": "Node2D",
 "class": "Emotion",
@@ -34,10 +64,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Actors/Enemy.gd"
 }, {
+"base": "State",
+"class": "Fall",
+"language": "GDScript",
+"path": "res://Scripts/States/Fall.gd"
+}, {
+"base": "Tile",
+"class": "Floor",
+"language": "GDScript",
+"path": "res://Scripts/Map/Floor.gd"
+}, {
 "base": "Node2D",
 "class": "GameWorld",
 "language": "GDScript",
 "path": "res://Scripts/GameWorld.gd"
+}, {
+"base": "Tile",
+"class": "Hole",
+"language": "GDScript",
+"path": "res://Scripts/Map/Hole.gd"
 }, {
 "base": "State",
 "class": "Idle",
@@ -49,15 +94,55 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Inventory.gd"
 }, {
+"base": "Sprite",
+"class": "Item",
+"language": "GDScript",
+"path": "res://Scripts/Items/Item.gd"
+}, {
+"base": "Item",
+"class": "Key",
+"language": "GDScript",
+"path": "res://Scripts/Items/Key.gd"
+}, {
+"base": "State",
+"class": "LevelUp",
+"language": "GDScript",
+"path": "res://Scripts/States/LevelUp.gd"
+}, {
 "base": "State",
 "class": "Move",
 "language": "GDScript",
 "path": "res://Scripts/States/Move.gd"
 }, {
+"base": "State",
+"class": "MoveAI",
+"language": "GDScript",
+"path": "res://Scripts/States/MoveAI.gd"
+}, {
+"base": "State",
+"class": "Outburst",
+"language": "GDScript",
+"path": "res://Scripts/States/Outburst.gd"
+}, {
 "base": "Node2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Scripts/Actors/Player.gd"
+}, {
+"base": "Item",
+"class": "Potion",
+"language": "GDScript",
+"path": "res://Scripts/Items/Potion.gd"
+}, {
+"base": "Emotion",
+"class": "Sad",
+"language": "GDScript",
+"path": "res://Scripts/Emotions/Sad.gd"
+}, {
+"base": "Emotion",
+"class": "Scared",
+"language": "GDScript",
+"path": "res://Scripts/Emotions/Scared.gd"
 }, {
 "base": "Actor",
 "class": "Soul",
@@ -73,34 +158,69 @@ _global_script_classes=[ {
 "class": "Tile",
 "language": "GDScript",
 "path": "res://Scripts/Map/Tile.gd"
+}, {
+"base": "Item",
+"class": "Tonic",
+"language": "GDScript",
+"path": "res://Scripts/Items/Tonic.gd"
+}, {
+"base": "State",
+"class": "Use",
+"language": "GDScript",
+"path": "res://Scripts/States/Use.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
+"Angry": "",
+"Attack": "",
 "Body": "",
+"Buy": "",
+"Coin": "",
+"Death": "",
 "Dungeon": "",
+"Elixir": "",
 "Emotion": "",
 "Enemy": "",
+"Fall": "",
+"Floor": "",
 "GameWorld": "",
+"Hole": "",
 "Idle": "",
 "Inventory": "",
+"Item": "",
+"Key": "",
+"LevelUp": "",
 "Move": "",
+"MoveAI": "",
+"Outburst": "",
 "Player": "",
+"Potion": "",
+"Sad": "",
+"Scared": "",
 "Soul": "",
 "State": "",
-"Tile": ""
+"Tile": "",
+"Tonic": "",
+"Use": ""
 }
 
 [application]
 
 config/name="Body and Soul"
 run/main_scene="res://Objects/Scene.tscn"
-config/icon="res://icon.png"
+config/icon="res://Mask.png"
+config/windows_native_icon="res://mask.ico"
 
 [display]
 
 window/size/width=704
 window/size/height=704
 window/size/resizable=false
+window/stretch/aspect="keep"
+
+[global]
+
+icon=false
 
 [input]
 
@@ -139,9 +259,29 @@ ui_down={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+ui_page_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777235,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 soul_mode={
 "deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+use={
+"deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+buy={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777240,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+reset={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777220,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

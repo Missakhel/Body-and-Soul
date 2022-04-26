@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/tiles.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Items/Tonic.gd" type="Script" id=2]
+
+[node name="Tonic" type="Sprite"]
+modulate = Color( 0, 0.976471, 1, 1 )
+texture = ExtResource( 1 )
+hframes = 48
+vframes = 22
+frame = 657
+script = ExtResource( 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( 1, 0 )
+z_index = -1
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -12, -24, -4, -24, -4, -28, 4, -28, 4, -24, 12, -24, 12, -12, 8, -12, 8, 0, 12, 0, 12, 4, 16, 4, 16, 8, 20, 8, 20, 20, 16, 20, 16, 24, 12, 24, 12, 28, -12, 28, -12, 24, -16, 24, -16, 20, -20, 20, -20, 8, -16, 8, -16, 4, -12, 4, -12, 0, -8, 0, -8, -12, -12, -12 )

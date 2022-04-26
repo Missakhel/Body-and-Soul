@@ -4,7 +4,7 @@ class_name Player
 onready var body : Sprite
 onready var soul : Sprite
 
-var dungeon : Node2D
+var delta : float
 var soulModeOn : bool
 var currentMode : Sprite
 var currentState : State
@@ -15,23 +15,13 @@ var bodyResource = load("res://Character/Body.tscn")
 
 func _ready():
 	print("Dungeon -> Player")
-	dungeon = get_parent()
-	soul = soulResource.instance()
-	add_child(body)
 	body = bodyResource.instance()
+	add_child(body)
+	soul = soulResource.instance()
 	add_child(soul)
 	currentMode = body
 	currentMode.onEnter()
 
 func _process(_delta):
+	#delta = _delta
 	currentMode.onUpdate()
-
-func changeMode():
-	currentMode.onExit()
-	if soulModeOn:
-		soulModeOn = false
-		currentMode = body
-	else:
-		soulModeOn = true
-		currentMode = soul
-	currentMode.onEnter()
